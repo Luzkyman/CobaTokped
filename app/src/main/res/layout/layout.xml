@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Luqman"
+        android:textStyle="bold"
+        android:textSize="@dimen/_35ssp"
+        android:textColor="#030303" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Luqman Ar Rafif"
+        android:textStyle="bold"
+        android:textSize="@dimen/_20ssp"
+        android:textColor="#030303" />
+
+    <ImageView
+        android:layout_width="@dimen/_300sdp"
+        android:layout_height="@dimen/_180sdp"
+        android:src="@mipmap/banner_foreground" />
+</LinearLayout>
