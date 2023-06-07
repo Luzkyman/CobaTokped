@@ -2,6 +2,7 @@ package com.example.cobatokped.core.data.source.remote.network
 
 import android.provider.ContactsContract.CommonDataKinds.Email
 import com.example.cobatokped.core.data.source.remote.request.LoginRequest
+import com.example.cobatokped.core.data.source.remote.response.LoginResponse
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
@@ -16,7 +17,7 @@ interface ApiService {
 //    @Field("email") email: String,
 //    @Field("password") password: String,
 
-    ): Response<RequestBody>
+    ): Response<LoginResponse>
 
     // "http://127.0.0.1:8000/api/register"
     @POST("register")

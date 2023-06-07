@@ -3,10 +3,17 @@ package com.example.cobatokped.ui.login
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cobatokped.core.data.source.remote.network.State
 import com.example.cobatokped.core.data.source.remote.request.LoginRequest
 import com.example.cobatokped.databinding.ActivityLoginBinding
 import com.example.cobatokped.util.Prefs
+import com.inyongtisto.myhelper.extension.isEmpty
+import com.inyongtisto.myhelper.extension.showToast
+import com.inyongtisto.myhelper.extension.toGone
+import com.inyongtisto.myhelper.extension.toVisible
+import com.inyongtisto.myhelper.extension.toastError
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LoginActivity : AppCompatActivity() {
@@ -30,18 +37,35 @@ class LoginActivity : AppCompatActivity() {
         })
 
         binding.btnMasuk.setOnClickListener {
-
-            val body = LoginRequest(
-                binding.edtEmail.text.toString(),
-                binding.edtPassword.text.toString()
-            )
-
-            viewModel.login(body).observe(this, {
-
-            })
+            login()
         }
     }
 
+    private fun login() {
 
+        if (binding.edtEmail.isEmpty()) return
+        if (binding.edtPassword.isEmpty()) return
 
+        val body = LoginRequest(
+            binding.edtEmail.text.toString(),
+            binding.edtPassword.text.toString()
+        )
+
+        viewModel.login(body).observe(this, {
+
+            when (it.state){
+                State.SUCCESS ->{
+                    binding.pd.toGone()
+                    showToast("Selamat Datang "+it.data?.name)
+                }
+                State.ERROR -> {
+                    binding.pd.toGone()
+                    toastError(it.message ?: "Error")
+                }
+                State.LOADING -> {
+                    binding.pd.toVisible()
+                }
+            }
+        })
+    }
 }
