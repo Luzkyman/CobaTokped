@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import com.example.cobatokped.core.data.source.remote.request.LoginRequest
 import com.example.cobatokped.databinding.ActivityLoginBinding
 import com.example.cobatokped.util.Prefs
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -23,32 +24,22 @@ class LoginActivity : AppCompatActivity() {
         setData()
     }
 
-    fun setData() {
+    private fun setData() {
         viewModel.text.observe(this, {
         binding.edtEmail.setText(it)
         })
 
         binding.btnMasuk.setOnClickListener {
-            viewModel.ubahData()
-        }
-    }
-    fun testingData() {
-        val s = Prefs(this)
-        if(s.getIsLogin()){
-            binding.tvStatus.text = "Sudah Login"
-        } else binding.tvStatus.text = "Belum Login"
 
-        binding.btnLogin.setOnClickListener {
-            s.setIsLogin(true)
-            onBackPressedDispatcher.onBackPressed()
-        }
+            val body = LoginRequest(
+                binding.edtEmail.text.toString(),
+                binding.edtPassword.text.toString()
+            )
 
-        binding.btnLogout.setOnClickListener {
-            s.setIsLogin(false)
-            onBackPressedDispatcher.onBackPressed()
-        }
+            viewModel.login(body).observe(this, {
 
-        Log.d("Respon", "pesan singkat")
+            })
+        }
     }
 
 

@@ -36,6 +36,7 @@
             android:layout_height="wrap_content" >
 
             <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/edt_password"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -126,41 +127,6 @@
                 android:textColor="@color/colorPrimary"/>
 
         </LinearLayout>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_centerInParent="true"
-        android:orientation="vertical"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone">
-
-        <TextView
-            android:id="@+id/tv_status"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_12ssp"
-            android:text="Login" />
-
-        <TextView
-            android:layout_marginTop="10sp"
-            android:id="@+id/btn_login"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_11ssp"
-            android:text="Login" />
-
-        <TextView
-            android:layout_marginTop="10dp"
-            android:id="@+id/btn_logout"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_12ssp"
-            android:text="Logout" />
 
     </LinearLayout>
 
